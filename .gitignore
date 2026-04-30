@@ -1,0 +1,27 @@
+# Environment files
+.env
+.env.local
+.env.*
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+
+# Database and output data
+*.db
+data/*.csv
+
+# Editor / IDE
+.ipynb_checkpoints/
+.vscode/
+
+# Local or generated assets
+presentation/
+*.log
+*.sqlite
+.DS_Store
