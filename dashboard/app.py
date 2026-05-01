@@ -461,9 +461,11 @@ elif page == "Trends":
 
     trend_all = (
         df_raw.groupby(["fiscal_year", "department"])["total_comp"]
-        .sum()
+        .mean()
         .reset_index()
     )
+
+    trend_all["fiscal_year"] = trend_all["fiscal_year"].astype(str)
 
     fig = px.line(
         trend_all,
@@ -473,18 +475,17 @@ elif page == "Trends":
         markers=True
     )
 
-    fig.update_yaxes(tickprefix="$", tickformat=".2s")
+    fig.update_yaxes(tickprefix="$", tickformat=",.0f")
 
     fig = format_chart(
         fig,
-        title="Total Compensation Trends by Department Over Time",
+        title="",
         x_title="Fiscal Year",
-        y_title="Total Compensation (USD)",
+        y_title="Average Compensation (USD)",
         legend_title="Department"
     )
 
     st.plotly_chart(fig, use_container_width=True)
-
 
 # ────────────────────────────────────────────────────────────────────────────────
 # DEPARTMENTS PAGE
